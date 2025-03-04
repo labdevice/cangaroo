@@ -57,6 +57,8 @@ void CanMessage::cloneFrom(const CanMessage &msg)
 {
     _raw_id = msg._raw_id;
     _dlc = msg._dlc;
+    _isFD = msg._isFD;
+    _isBRS = msg._isBRS;
 
     // Copy data
     for(int i=0; i<64; i++)
