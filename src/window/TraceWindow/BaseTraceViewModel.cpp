@@ -113,12 +113,11 @@ QVariant BaseTraceViewModel::formatTimestamp(timestamp_mode_t mode, const CanMes
 
         double t_current = currentMsg.getFloatTimestamp();
         double t_last = lastMsg.getFloatTimestamp();
-        if (t_last==0) {
-            return QVariant();
-        } else {
-            return QString().sprintf("%.04lf", t_current-t_last);
+        double delta = 0; // Set to 0 as default to avoid empty timestamps
+        if (t_last!=0) {
+            delta = t_current-t_last;
         }
-
+        return QString().sprintf("%.04lf", delta);
     } else if (mode==timestamp_mode_absolute) {
 
         return currentMsg.getDateTime().toString("hh:mm:ss.zzz");
