@@ -641,8 +641,8 @@ bool SLCANInterface::parseMessage(CanMessage &msg)
         id_tmp += _rx_linbuf[parse_loc++];
     }
 
-
     msg.setId(id_tmp);
+    msg.setFD(msg_is_fd);
 
     // Attempt to parse DLC and check sanity
     uint8_t dlc_code_raw = _rx_linbuf[parse_loc++];

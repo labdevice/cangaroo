@@ -291,6 +291,7 @@ bool CANBlasterInterface::readMessage(QList<CanMessage> &msglist, unsigned int t
             msg.setInterfaceId(getId());
             msg.setId(frame.can_id & CAN_ERR_MASK);
             msg.setBRS(false);
+            msg.setFD(false);
             msg.setErrorFrame(frame.can_id & CAN_ERR_FLAG);
             msg.setExtended(frame.can_id & CAN_EFF_FLAG);
             msg.setRTR(frame.can_id & CAN_RTR_FLAG);
