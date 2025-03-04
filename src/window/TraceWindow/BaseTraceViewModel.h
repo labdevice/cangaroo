@@ -41,6 +41,7 @@ public:
         column_canid,
         column_sender,
         column_name,
+        column_is_fd,
         column_dlc,
         column_data,
         column_comment,

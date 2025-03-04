@@ -56,6 +56,8 @@ QVariant BaseTraceViewModel::headerData(int section, Qt::Orientation orientation
                     return QString("CAN ID");
                 case column_sender:
                     return QString("Sender");
+                case column_is_fd:
+                    return QString("FD?");
                 case column_name:
                     return QString("Name");
                 case column_dlc:
@@ -158,6 +160,9 @@ QVariant BaseTraceViewModel::data_DisplayRole_Message(const QModelIndex &index, 
         case column_canid:
             return currentMsg.getIdString();
 
+        case column_is_fd:
+            return currentMsg.isFD()? "Y" : "N";
+        
         case column_name:
             return (dbmsg) ? dbmsg->getName() : "";
 
@@ -238,6 +243,7 @@ QVariant BaseTraceViewModel::data_TextAlignmentRole(const QModelIndex &index, in
         case column_canid: return Qt::AlignRight + Qt::AlignVCenter;
         case column_sender: return Qt::AlignLeft + Qt::AlignVCenter;
         case column_name: return Qt::AlignLeft + Qt::AlignVCenter;
+        case column_is_fd: return Qt::AlignLeft + Qt::AlignVCenter;
         case column_dlc: return Qt::AlignCenter + Qt::AlignVCenter;
         case column_data: return Qt::AlignLeft + Qt::AlignVCenter;
         case column_comment: return Qt::AlignLeft + Qt::AlignVCenter;
